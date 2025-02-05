@@ -2,6 +2,8 @@
 
 namespace App\models;
 
+use App\config\Database;
+
 class User
 {
     protected int $id;
@@ -23,7 +25,10 @@ class User
 
     public function authenticate($email, $password)
     {
-        die($email . "///" . $password);
+        phpinfo();
+        $db = Database::getInstance()->getConnection();
+        var_dump($db);
+        die;
     }
 
 

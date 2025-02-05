@@ -20,11 +20,16 @@ class AuthController
     }
 
     public function Login(array $data) {
-        $user = $this->userModel->authenticate($data["email"], $data["password"]);
+        if(!empty($data)) {
+            $user = $this->userModel->authenticate($data["email"], $data["password"]);
+        }
+
         if ($user) {
             $_SESSION['user'] = $user;
-            header('Location: /dashboard');
+            var_dump($_SESSION['user']);
+            die;
         } else {
+            $_SESSION['message'] = "Login failed";
             header('Location: /login?error=invalid_credentials');
         }
     }

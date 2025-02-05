@@ -55,7 +55,6 @@ class Router
         } else {
             Application::$app->Router->{strtolower($method)}($path, $uri[0]);
         }
-
     }
 
 
@@ -64,6 +63,7 @@ class Router
         $this->setCallback();
         $path = $this->Request->getPath();
         $method = $this->Request->getMethod();
+        $params = $this->Request->getData();
 
         $callback = $this->routes[$method][$path] ?? false;
 
@@ -83,9 +83,6 @@ class Router
             Application::$app->Controller = new $callback[0]();
             $callback[0] = Application::$app->Controller;
             $method = $callback[1];
-
-            $params = $this->Request->getData();
-
 
             if(isset($params) && is_array($params))
             {   

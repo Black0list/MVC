@@ -21,19 +21,8 @@ class Request
     public function getData()
     {
         $data = [];
-
-        if($_SERVER["REQUEST_METHOD"] === "GET")
-        {
-            foreach ($_GET as $key => $value) {
-                $data[$key] = $value;         
-            }
-        }
-
-        if($_SERVER["REQUEST_METHOD"] === "POST")
-        {
-            foreach ($_POST as $key => $value) {
-                $data[$key] = $value;         
-            }
+        foreach ($_REQUEST as $key => $value) {
+            $data[$key] = $value;
         }
 
         return $data;

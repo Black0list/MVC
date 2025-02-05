@@ -10,5 +10,7 @@
             "email": "abdelkebir123123@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+      "ext-pdo": "*"
+    }
 }
